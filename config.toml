@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://platinumgodkarma.com/"
 languageCode = "en"
 defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "未来科技有限公司"
@@ -37,7 +37,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   name = "Archives"
   weight = 20
   identifier = "archives"
-  url = "/post/"
+  url = "/snippets/"
 [[menu.main]]
   name = "Tags"
   weight = 30
