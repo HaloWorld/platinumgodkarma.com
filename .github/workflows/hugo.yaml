@@ -54,5 +54,5 @@ jobs:
             --gc \
             --minify && \
           tar -zcvf artifacts.tar.gz public && \
-          echo "{\"artifacts\":\"$(cat artifacts.tar.gz | base64)\"}" > tmp.json && \
-          curl -H "Content-Type:application/json" -X Post -d @tmp.json https://platinumgodkarma.com/hooks/deploy-blog
+          echo "{\"artifacts\":\"$(cat artifacts.tar.gz | base64)\"}" > ${GITHUB_WORKSPACE}/tmp.json && \
+          curl -H "Content-Type:application/json" -X Post -d @${GITHUB_WORKSPACE}/tmp.json https://platinumgodkarma.com/hooks/deploy-blog
