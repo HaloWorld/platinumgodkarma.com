@@ -52,19 +52,7 @@ jobs:
         run: |
           hugo \
             --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./public
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+            --minify && \
+          tar -zcvf artifacts.tar.gz public && \
+          echo "{\"artifacts\":\"$(cat artifacts.tar.gz | base64)\"}" > tmp.json && \
+          curl -H "Content-Type:application/json" -X Post -d @tmp.json https://platinumgodkarma.com/hooks/deploy-blog
