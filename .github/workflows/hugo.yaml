@@ -14,7 +14,6 @@ permissions:
 defaults:
   run:
     shell: bash
-    working-directory: ${{ github.workspace }}
 
 jobs:
   build:
@@ -38,13 +37,12 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: HaloWorld/vault
-          path: ${{ github.workspace }}/vault
+          path: ${GITHUB_WORKSPACE}/.vault
           token: ${{ secrets.BLOG_PAT }}
       - name: Copy content
         run: |
-          mv ${{ github.workspace }}/vault/public ${{ github.workspace }}/blog/content
+          mv ${GITHUB_WORKSPACE}/.vault/public ${GITHUB_WORKSPACE}/content
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v3
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
