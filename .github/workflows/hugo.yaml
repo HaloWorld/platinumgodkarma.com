@@ -30,14 +30,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: ${{ github.workspace }}/blog
           submodules: recursive
           fetch-depth: 0
       - name: Checkout Vault
         uses: actions/checkout@master
         with:
           repository: HaloWorld/vault
-          path: ${GITHUB_WORKSPACE}/.vault
+          path: .vault
           token: ${{ secrets.BLOG_PAT }}
       - name: Copy content
         run: |
