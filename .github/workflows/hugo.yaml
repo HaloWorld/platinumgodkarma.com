@@ -40,7 +40,8 @@ jobs:
           token: ${{ secrets.BLOG_PAT }}
       - name: Copy content
         run: |
-          mv ${GITHUB_WORKSPACE}/.vault/public ${GITHUB_WORKSPACE}/content
+          mv ${GITHUB_WORKSPACE}/.vault/public ${GITHUB_WORKSPACE}/content \
+          la -ahl ${GITHUB_WORKSPACE}/content
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Install Node.js dependencies
